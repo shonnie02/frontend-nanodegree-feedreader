@@ -25,18 +25,24 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-
+        
+        /* This test loops through each feed
+         * in the allFeeds object and ensures it has a URL defined
+         * and that the URL is not empty.
+         */
         
         it('have a URL defined', function() {
             allFeeds.forEach(function(index){
-
                 expect(index.url).toBeDefined();
                 expect(index.url.length).not.toBe(0);
             });
 
         });
 
-
+        /* The test loops through each feed
+         * in the allFeeds object and ensures it has a name defined
+         * and that the name is not empty.
+         */
        
         it('have a name defined', function(){
             allFeeds.forEach(function(index){
@@ -49,15 +55,22 @@ $(function() {
 
 
     describe('The menu', function(){
-
+                
+      /* This test that ensures the menu element is
+          hidden by default. */
+        
      //Utilized concepts from Matthew Cranford's Feedreader Walkthrough   
         it('is hidden by default', function(){
             const bodyClass = document.querySelector('body');
-
                 expect(bodyClass.classList.contains('menu-hidden')).toBe(true);
         });
     
 
+        /* This test will ensures the menu changes
+          * visibility when the menu icon is clicked. This test
+          * has two expectations where the menu displays when
+          * clicked and the menu is hidden when clicked again.
+          */
          it('changes visibility when menu icon is clicked', function(){
             const navMenu = document.querySelector('.menu-icon-link');
             const bodyClass = document.querySelector('body');
@@ -75,15 +88,17 @@ $(function() {
 
         beforeEach(function(done){
 
-            loadFeed(1, done);
-            
-
+            loadFeed(1, done);          
         });
 
+        
+        /* This test ensures when the loadFeed
+        * function is called and completes its work, there is at least
+        * a single .entry element within the .feed container.
+        */
         //Utilized concepts from Ryan Waite's "Feedreader Testing Walkthrough"
-
         it('when loadFeed is called and completes work', function(){
-            const feedClass = document.querySelector('.feed');
+            const feedClass = document.querySelector('.feed .entry');
             expect(feedClass.children.length).toBeGreaterThan(0);
         });
 
@@ -105,8 +120,12 @@ $(function() {
             });                       
         });
         
+        
+        /* This is a test that ensures when a new feed is loaded
+         * by the loadFeed function that the content actually changes.
+         */
+        
         it('content actually changes', function(){
-
             expect(feedOne).not.toBe(feedTwo);
             
         });
